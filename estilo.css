@@ -1,0 +1,101 @@
+body {
+  background: yellow; /* Cambié el color  de fondo a amarillo */
+  font-family: sans-serif; /* Cambia la fuente a sans-serif */
+  text-align: center; /* Centra el contenido que se encuentra en el body */
+}
+
+.contenedor {
+  display: flex; /* Hace que las tarjetas se organicen en filas*/
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten a la siguiente línea si no caben en una fila */
+  justify-content: center; /*Centra todas las tarjetas*/
+  gap: 20px; /*Da espacio entre las tarjetas*/
+  background-color: green;
+  padding: 30px;
+}
+
+.tarjeta {
+  background: rgb(237, 237, 240); /* Cambia el color de fondo a un gris claro */
+  width: 250px; /* Cambia el ancho de la tarjeta */
+  margin: 50px auto; /* Centra la tarjeta horizontalmente */
+  padding: 20px; /* Agrega espacio interno a la tarjeta */
+  border-radius: 50px; /* Cambia el redondeado de los bordes a 50px */
+
+  height: auto; /* Cambia la altura de la tarjeta */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra a la tarjeta */
+  box-sizing: content-box; /* Cambia el modelo de caja para que el padding y el borde no afecten el tamaño total de la tarjeta */
+  position: relative; /* Permite que los elementos hijos se posicionen de manera relativa a la tarjeta */
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+button {
+  background: #1877f2;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*Nuevo (2 octubre 2026) */
+button:hover {
+  /* Efecto al pasar el mouse por encima */
+  opacity: 0.5; /* Hace que se vea un poco más tenue */
+}
+
+.perfilBoton {
+  background: #65676b; /* Diferencia el botón de perfil del botón Seguir */
+  margin-left: 5px; /* Separa los dos botones */
+}
+
+/*16 De octubre 2026*/
+.volverBoton {
+  background: #fce40d; /* Usa el azul de la cara frontal */
+  margin-top: 10px; /* Separa el botón de la información */
+  color: black; /* Cambia el color del texto a negro */
+}
+
+.perfilDetalle {
+  background: #1877f2;
+  padding: 30px 20px;
+  color: #fce40d;
+  font-size: 14px;
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  transform: rotateY(-180deg);
+  transition: transform 0.7s ease;
+  cursor: pointer;
+  border-radius: 50px;
+
+  display: none;
+  backface-visibility: hidden;
+}
+
+/* Desde aca */
+
+.tarjeta > img,
+.tarjeta > h2,
+.tarjeta > p,
+.tarjeta > button {
+  backface-visibility: hidden; /* Oculta la parte posterior de los elementos frontales */
+  transition: transform 0.7s ease; /* Hace suave el movimiento de los elementos */
+}
+
+.tarjeta.girada > img, /* Aplica la rotación a la imagen cuando la tarjeta está girada */
+.tarjeta.girada > h2,
+.tarjeta.girada > p,
+.tarjeta.girada > button {
+  transform: rotateY(180deg); /* Gira el contenido frontal hacia atrás */
+}
+
+/* Muestra el perfil en la misma posición y tamaño de la tarjeta. */
+.tarjeta.girada .perfilDetalle {
+  display: block; /* Hace visible la cara posterior */
+  transform: rotateY(0); /* Coloca el perfil de frente al usuario */
+}
+
